@@ -1,0 +1,19 @@
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.exe.config
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.exe
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.pdb
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.mp3Form.resources
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.Properties.Resources.resources
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.GenerateResource.Cache
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.exe
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.pdb
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.exe.config
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.exe
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.pdb
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.AssemblyReference.cache
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.SuggestedBindingRedirects.cache
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.mp3Form.resources
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.Properties.Resources.resources
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.GenerateResource.cache
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.CoreCompileInputs.cache
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.exe
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.pdb
