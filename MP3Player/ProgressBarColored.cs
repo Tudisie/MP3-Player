@@ -23,7 +23,7 @@ namespace MP3Player
             if (ProgressBarRenderer.IsSupported)
                 ProgressBarRenderer.DrawHorizontalBar(e.Graphics, e.ClipRectangle);
             rec.Height = rec.Height - 4;
-            e.Graphics.FillRectangle(Brushes.Red, 2, 2, rec.Width, rec.Height);
+            e.Graphics.FillRectangle(Brushes.Blue, 2, 2, rec.Width, rec.Height);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace MP3Player
 
         private void mp3Form_Load(object sender, EventArgs e)
         {
-            this.songInfo.Text = "First song";
+            this.songTitle.Text = "Empty player";
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -61,6 +61,31 @@ namespace MP3Player
         {
             this.timerSong.Stop();
             this.progressBarSong.Value = 0;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddPlaylist_Click(object sender, EventArgs e)
+        {
+            this.listBoxPlaylists.Items.Add("ASD");
+        }
+
+        private void roundButtonAddSong_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Mp3 Files|*.mp3";
+                if(ofd.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show(ofd.FileName);
+                    //Song mp3 = Song.Instance();
+                    //mp3.open(ofd.FileName);
+                    //mp3.play();
+                }
+            }
         }
     }
 }
