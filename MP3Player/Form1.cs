@@ -5,26 +5,20 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace MP3Player
 {
     public partial class mp3Form : Form
     {
+        private Song song;
         public mp3Form()
         {
             InitializeComponent();
-        }
-
-        private void groupBoxControlPanel_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            song = new MP3Player.Song();
         }
 
         private void mp3Form_Load(object sender, EventArgs e)
@@ -32,14 +26,10 @@ namespace MP3Player
             this.songTitle.Text = "Empty player";
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            
-        }
-
         private void startButton_Click(object sender, EventArgs e)
         {
             this.timerSong.Start();
+            song.Play();   
         }
 
         private void timerSong_Tick(object sender, EventArgs e)
@@ -50,22 +40,14 @@ namespace MP3Player
         private void pauseButton_Click(object sender, EventArgs e)
         {
             this.timerSong.Stop();
-        }
-
-        private void roundButton1_Click(object sender, EventArgs e)
-        {
-
+            song.Pause();
         }
 
         private void stopButton_Click(object sender, EventArgs e)
         {
             this.timerSong.Stop();
             this.progressBarSong.Value = 0;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            song.Stop();
         }
 
         private void buttonAddPlaylist_Click(object sender, EventArgs e)
@@ -80,12 +62,10 @@ namespace MP3Player
                 ofd.Filter = "Mp3 Files|*.mp3";
                 if(ofd.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show(ofd.FileName);
-                    //Song mp3 = Song.Instance();
-                    //mp3.open(ofd.FileName);
-                    //mp3.play();
+                    song.SongPath = ofd.FileName;
                 }
             }
         }
+
     }
 }

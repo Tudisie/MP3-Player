@@ -32,28 +32,28 @@
             System.Windows.Forms.PictureBox songLogo;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mp3Form));
             this.groupBoxControlPanel = new System.Windows.Forms.GroupBox();
+            this.progressBarSong = new MP3Player.NewProgressBar();
             this.songDisplay = new System.Windows.Forms.Panel();
             this.songType = new System.Windows.Forms.Label();
             this.songState = new System.Windows.Forms.Label();
             this.songTime = new System.Windows.Forms.Label();
             this.songPassedTime = new System.Windows.Forms.Label();
             this.songTitle = new System.Windows.Forms.Label();
+            this.playButton = new MP3Player.RoundButton();
+            this.pauseButton = new MP3Player.RoundButton();
+            this.previousSongButton = new MP3Player.RoundButton();
+            this.nextSongButton = new MP3Player.RoundButton();
+            this.stopButton = new MP3Player.RoundButton();
             this.groupBoxPlaylists = new System.Windows.Forms.GroupBox();
             this.buttonRemovePlaylist = new System.Windows.Forms.Button();
             this.buttonAddPlaylist = new System.Windows.Forms.Button();
             this.listBoxPlaylists = new System.Windows.Forms.ListBox();
             this.groupBoxSongs = new System.Windows.Forms.GroupBox();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
-            this.volumeBar = new System.Windows.Forms.TrackBar();
-            this.timerSong = new System.Windows.Forms.Timer(this.components);
             this.roundButtonAddSong = new MP3Player.RoundButton();
             this.roundButtonRemoveSong = new MP3Player.RoundButton();
-            this.progressBarSong = new MP3Player.NewProgressBar();
-            this.playButton = new MP3Player.RoundButton();
-            this.pauseButton = new MP3Player.RoundButton();
-            this.previousSongButton = new MP3Player.RoundButton();
-            this.nextSongButton = new MP3Player.RoundButton();
-            this.stopButton = new MP3Player.RoundButton();
+            this.volumeBar = new System.Windows.Forms.TrackBar();
+            this.timerSong = new System.Windows.Forms.Timer(this.components);
             songLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(songLogo)).BeginInit();
             this.groupBoxControlPanel.SuspendLayout();
@@ -72,7 +72,6 @@
             songLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             songLogo.TabIndex = 1;
             songLogo.TabStop = false;
-            songLogo.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // groupBoxControlPanel
             // 
@@ -90,7 +89,13 @@
             this.groupBoxControlPanel.TabIndex = 0;
             this.groupBoxControlPanel.TabStop = false;
             this.groupBoxControlPanel.Text = "Control Panel";
-            this.groupBoxControlPanel.Enter += new System.EventHandler(this.groupBoxControlPanel_Enter);
+            // 
+            // progressBarSong
+            // 
+            this.progressBarSong.Location = new System.Drawing.Point(16, 120);
+            this.progressBarSong.Name = "progressBarSong";
+            this.progressBarSong.Size = new System.Drawing.Size(338, 10);
+            this.progressBarSong.TabIndex = 20;
             // 
             // songDisplay
             // 
@@ -111,7 +116,7 @@
             this.songType.AutoSize = true;
             this.songType.Location = new System.Drawing.Point(158, 55);
             this.songType.Name = "songType";
-            this.songType.Size = new System.Drawing.Size(34, 16);
+            this.songType.Size = new System.Drawing.Size(36, 17);
             this.songType.TabIndex = 5;
             this.songType.Text = "MP3";
             // 
@@ -120,7 +125,7 @@
             this.songState.AutoSize = true;
             this.songState.Location = new System.Drawing.Point(87, 53);
             this.songState.Name = "songState";
-            this.songState.Size = new System.Drawing.Size(52, 16);
+            this.songState.Size = new System.Drawing.Size(54, 17);
             this.songState.TabIndex = 4;
             this.songState.Text = "Playing";
             // 
@@ -129,7 +134,7 @@
             this.songTime.AutoSize = true;
             this.songTime.Location = new System.Drawing.Point(288, 53);
             this.songTime.Name = "songTime";
-            this.songTime.Size = new System.Drawing.Size(38, 16);
+            this.songTime.Size = new System.Drawing.Size(44, 17);
             this.songTime.TabIndex = 3;
             this.songTime.Text = "03:30";
             // 
@@ -140,7 +145,7 @@
             this.songPassedTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
             this.songPassedTime.Location = new System.Drawing.Point(280, 21);
             this.songPassedTime.Name = "songPassedTime";
-            this.songPassedTime.Size = new System.Drawing.Size(55, 22);
+            this.songPassedTime.Size = new System.Drawing.Size(55, 24);
             this.songPassedTime.TabIndex = 2;
             this.songPassedTime.Text = "00:00";
             // 
@@ -154,6 +159,81 @@
             this.songTitle.Size = new System.Drawing.Size(172, 53);
             this.songTitle.TabIndex = 0;
             this.songTitle.Text = "Empty player";
+            // 
+            // playButton
+            // 
+            this.playButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.playButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playButton.BackgroundImage")));
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.playButton.FlatAppearance.BorderSize = 0;
+            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.playButton.Location = new System.Drawing.Point(155, 144);
+            this.playButton.Margin = new System.Windows.Forms.Padding(0);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(64, 64);
+            this.playButton.TabIndex = 10;
+            this.playButton.UseVisualStyleBackColor = false;
+            this.playButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.pauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pauseButton.BackgroundImage")));
+            this.pauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pauseButton.FlatAppearance.BorderSize = 0;
+            this.pauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pauseButton.Location = new System.Drawing.Point(102, 158);
+            this.pauseButton.Margin = new System.Windows.Forms.Padding(0);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(36, 36);
+            this.pauseButton.TabIndex = 14;
+            this.pauseButton.UseVisualStyleBackColor = false;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
+            // previousSongButton
+            // 
+            this.previousSongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.previousSongButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousSongButton.BackgroundImage")));
+            this.previousSongButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previousSongButton.FlatAppearance.BorderSize = 0;
+            this.previousSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousSongButton.Location = new System.Drawing.Point(51, 158);
+            this.previousSongButton.Margin = new System.Windows.Forms.Padding(0);
+            this.previousSongButton.Name = "previousSongButton";
+            this.previousSongButton.Size = new System.Drawing.Size(36, 36);
+            this.previousSongButton.TabIndex = 13;
+            this.previousSongButton.UseVisualStyleBackColor = false;
+            // 
+            // nextSongButton
+            // 
+            this.nextSongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.nextSongButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextSongButton.BackgroundImage")));
+            this.nextSongButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nextSongButton.FlatAppearance.BorderSize = 0;
+            this.nextSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextSongButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.nextSongButton.Location = new System.Drawing.Point(288, 158);
+            this.nextSongButton.Margin = new System.Windows.Forms.Padding(0);
+            this.nextSongButton.Name = "nextSongButton";
+            this.nextSongButton.Size = new System.Drawing.Size(36, 36);
+            this.nextSongButton.TabIndex = 12;
+            this.nextSongButton.UseVisualStyleBackColor = false;
+            // 
+            // stopButton
+            // 
+            this.stopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.stopButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("stopButton.BackgroundImage")));
+            this.stopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.stopButton.FlatAppearance.BorderSize = 0;
+            this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stopButton.Location = new System.Drawing.Point(237, 158);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(0);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(36, 36);
+            this.stopButton.TabIndex = 11;
+            this.stopButton.UseVisualStyleBackColor = false;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // groupBoxPlaylists
             // 
@@ -233,20 +313,6 @@
             this.listBoxSongs.Size = new System.Drawing.Size(404, 400);
             this.listBoxSongs.TabIndex = 10;
             // 
-            // volumeBar
-            // 
-            this.volumeBar.Location = new System.Drawing.Point(429, 55);
-            this.volumeBar.Name = "volumeBar";
-            this.volumeBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.volumeBar.Size = new System.Drawing.Size(56, 187);
-            this.volumeBar.TabIndex = 18;
-            this.volumeBar.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // timerSong
-            // 
-            this.timerSong.Interval = 10;
-            this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
-            // 
             // roundButtonAddSong
             // 
             this.roundButtonAddSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
@@ -277,87 +343,18 @@
             this.roundButtonRemoveSong.Text = "-";
             this.roundButtonRemoveSong.UseVisualStyleBackColor = false;
             // 
-            // progressBarSong
+            // volumeBar
             // 
-            this.progressBarSong.Location = new System.Drawing.Point(16, 120);
-            this.progressBarSong.Name = "progressBarSong";
-            this.progressBarSong.Size = new System.Drawing.Size(338, 10);
-            this.progressBarSong.TabIndex = 20;
+            this.volumeBar.Location = new System.Drawing.Point(429, 55);
+            this.volumeBar.Name = "volumeBar";
+            this.volumeBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.volumeBar.Size = new System.Drawing.Size(56, 187);
+            this.volumeBar.TabIndex = 18;
             // 
-            // playButton
+            // timerSong
             // 
-            this.playButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.playButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("playButton.BackgroundImage")));
-            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.playButton.FlatAppearance.BorderSize = 0;
-            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.playButton.Location = new System.Drawing.Point(155, 144);
-            this.playButton.Margin = new System.Windows.Forms.Padding(0);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(64, 64);
-            this.playButton.TabIndex = 10;
-            this.playButton.UseVisualStyleBackColor = false;
-            this.playButton.Click += new System.EventHandler(this.startButton_Click);
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.pauseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pauseButton.BackgroundImage")));
-            this.pauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pauseButton.FlatAppearance.BorderSize = 0;
-            this.pauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pauseButton.Location = new System.Drawing.Point(102, 158);
-            this.pauseButton.Margin = new System.Windows.Forms.Padding(0);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(36, 36);
-            this.pauseButton.TabIndex = 14;
-            this.pauseButton.UseVisualStyleBackColor = false;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
-            // 
-            // previousSongButton
-            // 
-            this.previousSongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.previousSongButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("previousSongButton.BackgroundImage")));
-            this.previousSongButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.previousSongButton.FlatAppearance.BorderSize = 0;
-            this.previousSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousSongButton.Location = new System.Drawing.Point(51, 158);
-            this.previousSongButton.Margin = new System.Windows.Forms.Padding(0);
-            this.previousSongButton.Name = "previousSongButton";
-            this.previousSongButton.Size = new System.Drawing.Size(36, 36);
-            this.previousSongButton.TabIndex = 13;
-            this.previousSongButton.UseVisualStyleBackColor = false;
-            // 
-            // nextSongButton
-            // 
-            this.nextSongButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.nextSongButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nextSongButton.BackgroundImage")));
-            this.nextSongButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.nextSongButton.FlatAppearance.BorderSize = 0;
-            this.nextSongButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextSongButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.nextSongButton.Location = new System.Drawing.Point(288, 158);
-            this.nextSongButton.Margin = new System.Windows.Forms.Padding(0);
-            this.nextSongButton.Name = "nextSongButton";
-            this.nextSongButton.Size = new System.Drawing.Size(36, 36);
-            this.nextSongButton.TabIndex = 12;
-            this.nextSongButton.UseVisualStyleBackColor = false;
-            // 
-            // stopButton
-            // 
-            this.stopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.stopButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("stopButton.BackgroundImage")));
-            this.stopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.stopButton.FlatAppearance.BorderSize = 0;
-            this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stopButton.Location = new System.Drawing.Point(237, 158);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(0);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(36, 36);
-            this.stopButton.TabIndex = 11;
-            this.stopButton.UseVisualStyleBackColor = false;
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            this.timerSong.Interval = 10;
+            this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
             // 
             // mp3Form
             // 

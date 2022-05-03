@@ -2,41 +2,75 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WMPLib;
 
 namespace MP3Player
 {
-    internal class Song
+    public class Song
     {
-        private static Song _instance;
-        private static extern long mciSendString(string lpstrCommand, StringBuilder lpstrReturnString, int uReturnLength, int hwdCallBack);
+        private WindowsMediaPlayer _wplayer = null;
+        private Thread _myThread;
+        private bool _isPaused = false;
+        private string _songPath;
 
-        private Song()
+        public void Play()
         {
+            try
+            {
+                if (_myThread == null)
+                {
+                    _myThread = new Thread(PlaySong);
+                    _myThread.Start();
+                    _isPaused = false;
+                }
+                else
+                {
+                    if (_isPaused)
+                    {
+                        _wplayer.controls.play();
+                    }
+                }
 
-        }
-        public static Song Instance() //Singleton
-        {
-            if (_instance == null)
-                _instance = new Song();
-            return _instance;
-        }
-        public void open(string File)
-        {
-            string Format = @"open ""{0}"" type MPEGVideo alias MediaFile";
-            string command = string.Format(Format, File);
-            mciSendString(command, null, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public void play()
+        public void PlaySong()
         {
-            string command = "play MediaFile";
-            mciSendString(command, null, 0, 0);
+            _wplayer = new WindowsMediaPlayer();
+            _wplayer.URL = _songPath;
+            _wplayer.controls.play();
         }
-        public void stop()
+
+        public void Pause()
         {
-            string command = "stop MediaFile";
-            mciSendString(command, null, 0, 0);
+            if (_wplayer != null)
+            {
+                _wplayer.controls.pause();
+                _isPaused = true;
+            }
         }
+
+        public void Stop()
+        {
+            if (_wplayer != null)
+            {
+                _wplayer.controls.stop();
+                _myThread.Abort();
+                _myThread = null;
+            }
+        }
+
+        public string SongPath
+        {
+            set { _songPath = value; }
+        }
+
     }
 }
