@@ -6,60 +6,33 @@ using System.Threading.Tasks;
 
 namespace MP3Player
 {
-    public class Playlist
+    // Subscriber
+    public abstract class Playlist
     {
         // Numele playlistului
-        string _playlistName;
+        protected string _playlistName;
 
         // Fiecare playlist are o lista de melodii
-        private Dictionary<string, string> _songList;
+        protected Dictionary<string, string> _songList;
 
-        public Playlist()
+        public abstract string[] Songs
         {
-            _playlistName = "Noname";
-            _songList = new Dictionary<string, string>();
+            get;
         }
 
-        public Playlist(string playlistName)
+        public abstract string PlaylistName
         {
-            _playlistName = playlistName;
-            _songList = new Dictionary<string, string>();
+            get;
         }
 
-        public string[] Songs
-        {
-            get
-            {
-                string[] songs = new string[_songList.Count];
-                int i = 0;
-                foreach(KeyValuePair<string, string> elem in _songList)
-                {
-                    songs[i++] = elem.Key;
-                }
+        public abstract string PlaylistSongPath(string name);
 
-                return songs;
-            }
-        }
+        public abstract void AddSong(string name, string path);
 
-        public string PlaylistSongPath(string name)
-        {
-            return _songList[name];
-        }
+        public abstract void RemoveSong(string name);
 
-        public string PlaylistName
-        {
-            get { return _playlistName; }
-        }
-
-        public void AddSong(string name, string path)
-        {
-            _songList[name] = path;
-        }
-
-        public void RemoveSong(string name)
-        {
-            _songList.Remove(name);
-        }
+        // Update
+        public abstract void Update(string songName);
 
     }
 }
