@@ -142,7 +142,7 @@ namespace MP3Player
             RefreshSongs();
         }
 
-        private void AddSongToPlaylist()
+        private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
         {
             string playlistName = Interaction.InputBox("In ce playlist introduceti melodia?", "Add song to playlist", "", -1, -1);
 
@@ -190,12 +190,6 @@ namespace MP3Player
             {
                 MessageBox.Show("Trebuie sa fiti in playlist-ul default pt a adauga melodii in alt playlist!");
             }
-
-        }
-
-        private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

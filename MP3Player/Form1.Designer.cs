@@ -46,6 +46,7 @@
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.timerSong = new System.Windows.Forms.Timer(this.components);
+            this.roundButtonAddSongToPlaylist = new MP3Player.RoundButton();
             this.roundButtonAddSong = new MP3Player.RoundButton();
             this.roundButtonRemoveSong = new MP3Player.RoundButton();
             this.progressBarSong = new MP3Player.NewProgressBar();
@@ -54,7 +55,6 @@
             this.previousSongButton = new MP3Player.RoundButton();
             this.nextSongButton = new MP3Player.RoundButton();
             this.stopButton = new MP3Player.RoundButton();
-            this.roundButtonAddSongToPlaylist = new MP3Player.RoundButton();
             songLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(songLogo)).BeginInit();
             this.groupBoxControlPanel.SuspendLayout();
@@ -110,7 +110,7 @@
             this.songType.AutoSize = true;
             this.songType.Location = new System.Drawing.Point(158, 55);
             this.songType.Name = "songType";
-            this.songType.Size = new System.Drawing.Size(36, 17);
+            this.songType.Size = new System.Drawing.Size(34, 16);
             this.songType.TabIndex = 5;
             this.songType.Text = "MP3";
             // 
@@ -119,7 +119,7 @@
             this.songState.AutoSize = true;
             this.songState.Location = new System.Drawing.Point(87, 53);
             this.songState.Name = "songState";
-            this.songState.Size = new System.Drawing.Size(54, 17);
+            this.songState.Size = new System.Drawing.Size(52, 16);
             this.songState.TabIndex = 4;
             this.songState.Text = "Playing";
             // 
@@ -128,7 +128,7 @@
             this.songTime.AutoSize = true;
             this.songTime.Location = new System.Drawing.Point(288, 53);
             this.songTime.Name = "songTime";
-            this.songTime.Size = new System.Drawing.Size(44, 17);
+            this.songTime.Size = new System.Drawing.Size(38, 16);
             this.songTime.TabIndex = 3;
             this.songTime.Text = "03:30";
             // 
@@ -139,7 +139,7 @@
             this.songPassedTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
             this.songPassedTime.Location = new System.Drawing.Point(280, 21);
             this.songPassedTime.Name = "songPassedTime";
-            this.songPassedTime.Size = new System.Drawing.Size(55, 24);
+            this.songPassedTime.Size = new System.Drawing.Size(55, 22);
             this.songPassedTime.TabIndex = 2;
             this.songPassedTime.Text = "00:00";
             // 
@@ -248,6 +248,21 @@
             // 
             this.timerSong.Interval = 10;
             this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
+            // 
+            // roundButtonAddSongToPlaylist
+            // 
+            this.roundButtonAddSongToPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.roundButtonAddSongToPlaylist.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSongToPlaylist.BackgroundImage")));
+            this.roundButtonAddSongToPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButtonAddSongToPlaylist.FlatAppearance.BorderSize = 0;
+            this.roundButtonAddSongToPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(104, 437);
+            this.roundButtonAddSongToPlaylist.Margin = new System.Windows.Forms.Padding(0);
+            this.roundButtonAddSongToPlaylist.Name = "roundButtonAddSongToPlaylist";
+            this.roundButtonAddSongToPlaylist.Size = new System.Drawing.Size(32, 32);
+            this.roundButtonAddSongToPlaylist.TabIndex = 11;
+            this.roundButtonAddSongToPlaylist.UseVisualStyleBackColor = false;
+            this.roundButtonAddSongToPlaylist.Click += new System.EventHandler(this.roundButtonAddSongToPlaylist_Click);
             // 
             // roundButtonAddSong
             // 
@@ -360,21 +375,6 @@
             this.stopButton.TabIndex = 11;
             this.stopButton.UseVisualStyleBackColor = false;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // roundButtonAddSongToPlaylist
-            // 
-            this.roundButtonAddSongToPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.roundButtonAddSongToPlaylist.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSongToPlaylist.BackgroundImage")));
-            this.roundButtonAddSongToPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.roundButtonAddSongToPlaylist.FlatAppearance.BorderSize = 0;
-            this.roundButtonAddSongToPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(106, 437);
-            this.roundButtonAddSongToPlaylist.Margin = new System.Windows.Forms.Padding(0);
-            this.roundButtonAddSongToPlaylist.Name = "roundButtonAddSongToPlaylist";
-            this.roundButtonAddSongToPlaylist.Size = new System.Drawing.Size(32, 32);
-            this.roundButtonAddSongToPlaylist.TabIndex = 11;
-            this.roundButtonAddSongToPlaylist.UseVisualStyleBackColor = false;
-            this.roundButtonAddSongToPlaylist.Click += new System.EventHandler(this.roundButtonAddSongToPlaylist_Click);
             // 
             // mp3Form
             // 

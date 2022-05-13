@@ -29,3 +29,6 @@ D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github\MP3-Player\M
 D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github\MP3-Player\MP3Player\obj\Debug\Interop.MediaPlayer.dll
 D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github\MP3-Player\MP3Player\obj\Debug\Interop.WMPLib.dll
 D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github\MP3-Player\MP3Player\obj\Debug\MP3Player.csproj.ResolveComReference.cache
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\Interop.MediaPlayer.dll
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\Interop.WMPLib.dll
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.ResolveComReference.cache
