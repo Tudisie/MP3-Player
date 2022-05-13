@@ -32,28 +32,29 @@
             System.Windows.Forms.PictureBox songLogo;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mp3Form));
             this.groupBoxControlPanel = new System.Windows.Forms.GroupBox();
-            this.progressBarSong = new MP3Player.NewProgressBar();
             this.songDisplay = new System.Windows.Forms.Panel();
             this.songType = new System.Windows.Forms.Label();
             this.songState = new System.Windows.Forms.Label();
             this.songTime = new System.Windows.Forms.Label();
             this.songPassedTime = new System.Windows.Forms.Label();
             this.songTitle = new System.Windows.Forms.Label();
-            this.playButton = new MP3Player.RoundButton();
-            this.pauseButton = new MP3Player.RoundButton();
-            this.previousSongButton = new MP3Player.RoundButton();
-            this.nextSongButton = new MP3Player.RoundButton();
-            this.stopButton = new MP3Player.RoundButton();
             this.groupBoxPlaylists = new System.Windows.Forms.GroupBox();
             this.buttonRemovePlaylist = new System.Windows.Forms.Button();
             this.buttonAddPlaylist = new System.Windows.Forms.Button();
             this.listBoxPlaylists = new System.Windows.Forms.ListBox();
             this.groupBoxSongs = new System.Windows.Forms.GroupBox();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
-            this.roundButtonAddSong = new MP3Player.RoundButton();
-            this.roundButtonRemoveSong = new MP3Player.RoundButton();
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.timerSong = new System.Windows.Forms.Timer(this.components);
+            this.roundButtonAddSong = new MP3Player.RoundButton();
+            this.roundButtonRemoveSong = new MP3Player.RoundButton();
+            this.progressBarSong = new MP3Player.NewProgressBar();
+            this.playButton = new MP3Player.RoundButton();
+            this.pauseButton = new MP3Player.RoundButton();
+            this.previousSongButton = new MP3Player.RoundButton();
+            this.nextSongButton = new MP3Player.RoundButton();
+            this.stopButton = new MP3Player.RoundButton();
+            this.roundButtonAddSongToPlaylist = new MP3Player.RoundButton();
             songLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(songLogo)).BeginInit();
             this.groupBoxControlPanel.SuspendLayout();
@@ -89,13 +90,6 @@
             this.groupBoxControlPanel.TabIndex = 0;
             this.groupBoxControlPanel.TabStop = false;
             this.groupBoxControlPanel.Text = "Control Panel";
-            // 
-            // progressBarSong
-            // 
-            this.progressBarSong.Location = new System.Drawing.Point(16, 120);
-            this.progressBarSong.Name = "progressBarSong";
-            this.progressBarSong.Size = new System.Drawing.Size(338, 10);
-            this.progressBarSong.TabIndex = 20;
             // 
             // songDisplay
             // 
@@ -159,6 +153,138 @@
             this.songTitle.Size = new System.Drawing.Size(172, 53);
             this.songTitle.TabIndex = 0;
             this.songTitle.Text = "Empty player";
+            // 
+            // groupBoxPlaylists
+            // 
+            this.groupBoxPlaylists.Controls.Add(this.buttonRemovePlaylist);
+            this.groupBoxPlaylists.Controls.Add(this.buttonAddPlaylist);
+            this.groupBoxPlaylists.Controls.Add(this.listBoxPlaylists);
+            this.groupBoxPlaylists.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBoxPlaylists.Location = new System.Drawing.Point(12, 284);
+            this.groupBoxPlaylists.Name = "groupBoxPlaylists";
+            this.groupBoxPlaylists.Size = new System.Drawing.Size(479, 232);
+            this.groupBoxPlaylists.TabIndex = 1;
+            this.groupBoxPlaylists.TabStop = false;
+            this.groupBoxPlaylists.Text = "Playlists";
+            // 
+            // buttonRemovePlaylist
+            // 
+            this.buttonRemovePlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.buttonRemovePlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemovePlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
+            this.buttonRemovePlaylist.Location = new System.Drawing.Point(359, 159);
+            this.buttonRemovePlaylist.Name = "buttonRemovePlaylist";
+            this.buttonRemovePlaylist.Size = new System.Drawing.Size(114, 51);
+            this.buttonRemovePlaylist.TabIndex = 2;
+            this.buttonRemovePlaylist.Text = "Remove playlist";
+            this.buttonRemovePlaylist.UseVisualStyleBackColor = false;
+            this.buttonRemovePlaylist.Click += new System.EventHandler(this.buttonRemovePlaylist_Click);
+            // 
+            // buttonAddPlaylist
+            // 
+            this.buttonAddPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.buttonAddPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
+            this.buttonAddPlaylist.Location = new System.Drawing.Point(359, 106);
+            this.buttonAddPlaylist.Margin = new System.Windows.Forms.Padding(1);
+            this.buttonAddPlaylist.Name = "buttonAddPlaylist";
+            this.buttonAddPlaylist.Size = new System.Drawing.Size(114, 48);
+            this.buttonAddPlaylist.TabIndex = 1;
+            this.buttonAddPlaylist.Text = "Add playlist";
+            this.buttonAddPlaylist.UseVisualStyleBackColor = false;
+            this.buttonAddPlaylist.Click += new System.EventHandler(this.buttonAddPlaylist_Click);
+            // 
+            // listBoxPlaylists
+            // 
+            this.listBoxPlaylists.BackColor = System.Drawing.Color.Black;
+            this.listBoxPlaylists.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxPlaylists.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxPlaylists.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
+            this.listBoxPlaylists.FormattingEnabled = true;
+            this.listBoxPlaylists.ItemHeight = 20;
+            this.listBoxPlaylists.Location = new System.Drawing.Point(16, 30);
+            this.listBoxPlaylists.Name = "listBoxPlaylists";
+            this.listBoxPlaylists.Size = new System.Drawing.Size(338, 180);
+            this.listBoxPlaylists.TabIndex = 0;
+            this.listBoxPlaylists.SelectedIndexChanged += new System.EventHandler(this.listBoxPlaylists_SelectedIndexChanged);
+            // 
+            // groupBoxSongs
+            // 
+            this.groupBoxSongs.Controls.Add(this.roundButtonAddSongToPlaylist);
+            this.groupBoxSongs.Controls.Add(this.listBoxSongs);
+            this.groupBoxSongs.Controls.Add(this.roundButtonAddSong);
+            this.groupBoxSongs.Controls.Add(this.roundButtonRemoveSong);
+            this.groupBoxSongs.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBoxSongs.Location = new System.Drawing.Point(518, 34);
+            this.groupBoxSongs.Name = "groupBoxSongs";
+            this.groupBoxSongs.Size = new System.Drawing.Size(441, 482);
+            this.groupBoxSongs.TabIndex = 2;
+            this.groupBoxSongs.TabStop = false;
+            this.groupBoxSongs.Text = "Songs";
+            // 
+            // listBoxSongs
+            // 
+            this.listBoxSongs.BackColor = System.Drawing.Color.Black;
+            this.listBoxSongs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
+            this.listBoxSongs.FormattingEnabled = true;
+            this.listBoxSongs.ItemHeight = 20;
+            this.listBoxSongs.Location = new System.Drawing.Point(19, 30);
+            this.listBoxSongs.Name = "listBoxSongs";
+            this.listBoxSongs.Size = new System.Drawing.Size(404, 400);
+            this.listBoxSongs.TabIndex = 10;
+            this.listBoxSongs.SelectedIndexChanged += new System.EventHandler(this.listBoxSongs_SelectedIndexChanged);
+            // 
+            // volumeBar
+            // 
+            this.volumeBar.Location = new System.Drawing.Point(429, 55);
+            this.volumeBar.Name = "volumeBar";
+            this.volumeBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.volumeBar.Size = new System.Drawing.Size(56, 187);
+            this.volumeBar.TabIndex = 18;
+            // 
+            // timerSong
+            // 
+            this.timerSong.Interval = 10;
+            this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
+            // 
+            // roundButtonAddSong
+            // 
+            this.roundButtonAddSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.roundButtonAddSong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSong.BackgroundImage")));
+            this.roundButtonAddSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButtonAddSong.FlatAppearance.BorderSize = 0;
+            this.roundButtonAddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButtonAddSong.Location = new System.Drawing.Point(19, 437);
+            this.roundButtonAddSong.Margin = new System.Windows.Forms.Padding(0);
+            this.roundButtonAddSong.Name = "roundButtonAddSong";
+            this.roundButtonAddSong.Size = new System.Drawing.Size(32, 32);
+            this.roundButtonAddSong.TabIndex = 9;
+            this.roundButtonAddSong.UseVisualStyleBackColor = false;
+            this.roundButtonAddSong.Click += new System.EventHandler(this.roundButtonAddSong_Click);
+            // 
+            // roundButtonRemoveSong
+            // 
+            this.roundButtonRemoveSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.roundButtonRemoveSong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonRemoveSong.BackgroundImage")));
+            this.roundButtonRemoveSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButtonRemoveSong.FlatAppearance.BorderSize = 0;
+            this.roundButtonRemoveSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButtonRemoveSong.Location = new System.Drawing.Point(62, 437);
+            this.roundButtonRemoveSong.Margin = new System.Windows.Forms.Padding(0);
+            this.roundButtonRemoveSong.Name = "roundButtonRemoveSong";
+            this.roundButtonRemoveSong.Size = new System.Drawing.Size(32, 32);
+            this.roundButtonRemoveSong.TabIndex = 8;
+            this.roundButtonRemoveSong.UseVisualStyleBackColor = false;
+            this.roundButtonRemoveSong.Click += new System.EventHandler(this.roundButtonRemoveSong_Click);
+            // 
+            // progressBarSong
+            // 
+            this.progressBarSong.Location = new System.Drawing.Point(16, 120);
+            this.progressBarSong.Name = "progressBarSong";
+            this.progressBarSong.Size = new System.Drawing.Size(338, 10);
+            this.progressBarSong.TabIndex = 20;
             // 
             // playButton
             // 
@@ -235,126 +361,20 @@
             this.stopButton.UseVisualStyleBackColor = false;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
-            // groupBoxPlaylists
+            // roundButtonAddSongToPlaylist
             // 
-            this.groupBoxPlaylists.Controls.Add(this.buttonRemovePlaylist);
-            this.groupBoxPlaylists.Controls.Add(this.buttonAddPlaylist);
-            this.groupBoxPlaylists.Controls.Add(this.listBoxPlaylists);
-            this.groupBoxPlaylists.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBoxPlaylists.Location = new System.Drawing.Point(12, 284);
-            this.groupBoxPlaylists.Name = "groupBoxPlaylists";
-            this.groupBoxPlaylists.Size = new System.Drawing.Size(479, 232);
-            this.groupBoxPlaylists.TabIndex = 1;
-            this.groupBoxPlaylists.TabStop = false;
-            this.groupBoxPlaylists.Text = "Playlists";
-            // 
-            // buttonRemovePlaylist
-            // 
-            this.buttonRemovePlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.buttonRemovePlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRemovePlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.buttonRemovePlaylist.Location = new System.Drawing.Point(359, 171);
-            this.buttonRemovePlaylist.Name = "buttonRemovePlaylist";
-            this.buttonRemovePlaylist.Size = new System.Drawing.Size(114, 40);
-            this.buttonRemovePlaylist.TabIndex = 2;
-            this.buttonRemovePlaylist.Text = "Remove playlist";
-            this.buttonRemovePlaylist.UseVisualStyleBackColor = false;
-            // 
-            // buttonAddPlaylist
-            // 
-            this.buttonAddPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.buttonAddPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.buttonAddPlaylist.Location = new System.Drawing.Point(359, 126);
-            this.buttonAddPlaylist.Margin = new System.Windows.Forms.Padding(1);
-            this.buttonAddPlaylist.Name = "buttonAddPlaylist";
-            this.buttonAddPlaylist.Size = new System.Drawing.Size(114, 40);
-            this.buttonAddPlaylist.TabIndex = 1;
-            this.buttonAddPlaylist.Text = "Add playlist";
-            this.buttonAddPlaylist.UseVisualStyleBackColor = false;
-            this.buttonAddPlaylist.Click += new System.EventHandler(this.buttonAddPlaylist_Click);
-            // 
-            // listBoxPlaylists
-            // 
-            this.listBoxPlaylists.BackColor = System.Drawing.Color.Black;
-            this.listBoxPlaylists.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxPlaylists.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxPlaylists.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.listBoxPlaylists.FormattingEnabled = true;
-            this.listBoxPlaylists.ItemHeight = 20;
-            this.listBoxPlaylists.Location = new System.Drawing.Point(16, 30);
-            this.listBoxPlaylists.Name = "listBoxPlaylists";
-            this.listBoxPlaylists.Size = new System.Drawing.Size(338, 180);
-            this.listBoxPlaylists.TabIndex = 0;
-            // 
-            // groupBoxSongs
-            // 
-            this.groupBoxSongs.Controls.Add(this.listBoxSongs);
-            this.groupBoxSongs.Controls.Add(this.roundButtonAddSong);
-            this.groupBoxSongs.Controls.Add(this.roundButtonRemoveSong);
-            this.groupBoxSongs.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBoxSongs.Location = new System.Drawing.Point(518, 34);
-            this.groupBoxSongs.Name = "groupBoxSongs";
-            this.groupBoxSongs.Size = new System.Drawing.Size(441, 482);
-            this.groupBoxSongs.TabIndex = 2;
-            this.groupBoxSongs.TabStop = false;
-            this.groupBoxSongs.Text = "Songs";
-            // 
-            // listBoxSongs
-            // 
-            this.listBoxSongs.BackColor = System.Drawing.Color.Black;
-            this.listBoxSongs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxSongs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.listBoxSongs.FormattingEnabled = true;
-            this.listBoxSongs.ItemHeight = 20;
-            this.listBoxSongs.Location = new System.Drawing.Point(19, 30);
-            this.listBoxSongs.Name = "listBoxSongs";
-            this.listBoxSongs.Size = new System.Drawing.Size(404, 400);
-            this.listBoxSongs.TabIndex = 10;
-            // 
-            // roundButtonAddSong
-            // 
-            this.roundButtonAddSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.roundButtonAddSong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSong.BackgroundImage")));
-            this.roundButtonAddSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.roundButtonAddSong.FlatAppearance.BorderSize = 0;
-            this.roundButtonAddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSong.Location = new System.Drawing.Point(19, 437);
-            this.roundButtonAddSong.Margin = new System.Windows.Forms.Padding(0);
-            this.roundButtonAddSong.Name = "roundButtonAddSong";
-            this.roundButtonAddSong.Size = new System.Drawing.Size(32, 32);
-            this.roundButtonAddSong.TabIndex = 9;
-            this.roundButtonAddSong.UseVisualStyleBackColor = false;
-            this.roundButtonAddSong.Click += new System.EventHandler(this.roundButtonAddSong_Click);
-            // 
-            // roundButtonRemoveSong
-            // 
-            this.roundButtonRemoveSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.roundButtonRemoveSong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonRemoveSong.BackgroundImage")));
-            this.roundButtonRemoveSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.roundButtonRemoveSong.FlatAppearance.BorderSize = 0;
-            this.roundButtonRemoveSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonRemoveSong.Location = new System.Drawing.Point(62, 437);
-            this.roundButtonRemoveSong.Margin = new System.Windows.Forms.Padding(0);
-            this.roundButtonRemoveSong.Name = "roundButtonRemoveSong";
-            this.roundButtonRemoveSong.Size = new System.Drawing.Size(32, 32);
-            this.roundButtonRemoveSong.TabIndex = 8;
-            this.roundButtonRemoveSong.Text = "-";
-            this.roundButtonRemoveSong.UseVisualStyleBackColor = false;
-            // 
-            // volumeBar
-            // 
-            this.volumeBar.Location = new System.Drawing.Point(429, 55);
-            this.volumeBar.Name = "volumeBar";
-            this.volumeBar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.volumeBar.Size = new System.Drawing.Size(56, 187);
-            this.volumeBar.TabIndex = 18;
-            // 
-            // timerSong
-            // 
-            this.timerSong.Interval = 10;
-            this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
+            this.roundButtonAddSongToPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.roundButtonAddSongToPlaylist.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSongToPlaylist.BackgroundImage")));
+            this.roundButtonAddSongToPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButtonAddSongToPlaylist.FlatAppearance.BorderSize = 0;
+            this.roundButtonAddSongToPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(106, 437);
+            this.roundButtonAddSongToPlaylist.Margin = new System.Windows.Forms.Padding(0);
+            this.roundButtonAddSongToPlaylist.Name = "roundButtonAddSongToPlaylist";
+            this.roundButtonAddSongToPlaylist.Size = new System.Drawing.Size(32, 32);
+            this.roundButtonAddSongToPlaylist.TabIndex = 11;
+            this.roundButtonAddSongToPlaylist.UseVisualStyleBackColor = false;
+            this.roundButtonAddSongToPlaylist.Click += new System.EventHandler(this.roundButtonAddSongToPlaylist_Click);
             // 
             // mp3Form
             // 
@@ -406,6 +426,7 @@
         private NewProgressBar progressBarSong;
         private System.Windows.Forms.Label songState;
         private System.Windows.Forms.Label songType;
+        private RoundButton roundButtonAddSongToPlaylist;
     }
 }
 
