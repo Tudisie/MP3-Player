@@ -55,6 +55,7 @@
             this.roundButtonRemoveSong = new MP3Player.RoundButton();
             this.volumeBar = new System.Windows.Forms.TrackBar();
             this.timerSong = new System.Windows.Forms.Timer(this.components);
+            this.powerOffButton = new MP3Player.RoundButton();
             songLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(songLogo)).BeginInit();
             this.groupBoxControlPanel.SuspendLayout();
@@ -149,7 +150,6 @@
             this.songPassedTime.Size = new System.Drawing.Size(55, 22);
             this.songPassedTime.TabIndex = 2;
             this.songPassedTime.Text = "00:00";
-            this.songPassedTime.Click += new System.EventHandler(this.songPassedTime_Click);
             // 
             // songTitle
             // 
@@ -245,7 +245,7 @@
             this.groupBoxPlaylists.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBoxPlaylists.Location = new System.Drawing.Point(12, 284);
             this.groupBoxPlaylists.Name = "groupBoxPlaylists";
-            this.groupBoxPlaylists.Size = new System.Drawing.Size(479, 232);
+            this.groupBoxPlaylists.Size = new System.Drawing.Size(479, 219);
             this.groupBoxPlaylists.TabIndex = 1;
             this.groupBoxPlaylists.TabStop = false;
             this.groupBoxPlaylists.Text = "Playlists";
@@ -255,7 +255,7 @@
             this.buttonRemovePlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
             this.buttonRemovePlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemovePlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.buttonRemovePlaylist.Location = new System.Drawing.Point(359, 166);
+            this.buttonRemovePlaylist.Location = new System.Drawing.Point(359, 150);
             this.buttonRemovePlaylist.Name = "buttonRemovePlaylist";
             this.buttonRemovePlaylist.Size = new System.Drawing.Size(114, 51);
             this.buttonRemovePlaylist.TabIndex = 2;
@@ -268,7 +268,7 @@
             this.buttonAddPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
             this.buttonAddPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.buttonAddPlaylist.Location = new System.Drawing.Point(359, 106);
+            this.buttonAddPlaylist.Location = new System.Drawing.Point(359, 89);
             this.buttonAddPlaylist.Margin = new System.Windows.Forms.Padding(1);
             this.buttonAddPlaylist.Name = "buttonAddPlaylist";
             this.buttonAddPlaylist.Size = new System.Drawing.Size(114, 48);
@@ -287,7 +287,7 @@
             this.listBoxPlaylists.ItemHeight = 20;
             this.listBoxPlaylists.Location = new System.Drawing.Point(16, 30);
             this.listBoxPlaylists.Name = "listBoxPlaylists";
-            this.listBoxPlaylists.Size = new System.Drawing.Size(338, 200);
+            this.listBoxPlaylists.Size = new System.Drawing.Size(338, 180);
             this.listBoxPlaylists.TabIndex = 0;
             this.listBoxPlaylists.SelectedIndexChanged += new System.EventHandler(this.listBoxPlaylists_SelectedIndexChanged);
             // 
@@ -300,7 +300,7 @@
             this.groupBoxSongs.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBoxSongs.Location = new System.Drawing.Point(518, 34);
             this.groupBoxSongs.Name = "groupBoxSongs";
-            this.groupBoxSongs.Size = new System.Drawing.Size(441, 482);
+            this.groupBoxSongs.Size = new System.Drawing.Size(441, 469);
             this.groupBoxSongs.TabIndex = 2;
             this.groupBoxSongs.TabStop = false;
             this.groupBoxSongs.Text = "Songs";
@@ -310,9 +310,10 @@
             this.roundButtonAddSongToPlaylist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.roundButtonAddSongToPlaylist.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("roundButtonAddSongToPlaylist.BackgroundImage")));
             this.roundButtonAddSongToPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.roundButtonAddSongToPlaylist.Enabled = false;
             this.roundButtonAddSongToPlaylist.FlatAppearance.BorderSize = 0;
             this.roundButtonAddSongToPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(104, 437);
+            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(104, 419);
             this.roundButtonAddSongToPlaylist.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonAddSongToPlaylist.Name = "roundButtonAddSongToPlaylist";
             this.roundButtonAddSongToPlaylist.Size = new System.Drawing.Size(32, 32);
@@ -330,7 +331,7 @@
             this.listBoxSongs.ItemHeight = 20;
             this.listBoxSongs.Location = new System.Drawing.Point(19, 30);
             this.listBoxSongs.Name = "listBoxSongs";
-            this.listBoxSongs.Size = new System.Drawing.Size(404, 400);
+            this.listBoxSongs.Size = new System.Drawing.Size(404, 380);
             this.listBoxSongs.TabIndex = 10;
             this.listBoxSongs.SelectedIndexChanged += new System.EventHandler(this.listBoxSongs_SelectedIndexChanged);
             // 
@@ -341,7 +342,7 @@
             this.roundButtonAddSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.roundButtonAddSong.FlatAppearance.BorderSize = 0;
             this.roundButtonAddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSong.Location = new System.Drawing.Point(19, 437);
+            this.roundButtonAddSong.Location = new System.Drawing.Point(19, 419);
             this.roundButtonAddSong.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonAddSong.Name = "roundButtonAddSong";
             this.roundButtonAddSong.Size = new System.Drawing.Size(32, 32);
@@ -356,7 +357,7 @@
             this.roundButtonRemoveSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.roundButtonRemoveSong.FlatAppearance.BorderSize = 0;
             this.roundButtonRemoveSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonRemoveSong.Location = new System.Drawing.Point(62, 437);
+            this.roundButtonRemoveSong.Location = new System.Drawing.Point(62, 419);
             this.roundButtonRemoveSong.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonRemoveSong.Name = "roundButtonRemoveSong";
             this.roundButtonRemoveSong.Size = new System.Drawing.Size(32, 32);
@@ -377,11 +378,28 @@
             this.timerSong.Interval = 10;
             this.timerSong.Tick += new System.EventHandler(this.timerSong_Tick);
             // 
+            // powerOffButton
+            // 
+            this.powerOffButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.powerOffButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("powerOffButton.BackgroundImage")));
+            this.powerOffButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.powerOffButton.FlatAppearance.BorderSize = 0;
+            this.powerOffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.powerOffButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.powerOffButton.Location = new System.Drawing.Point(477, 518);
+            this.powerOffButton.Margin = new System.Windows.Forms.Padding(0);
+            this.powerOffButton.Name = "powerOffButton";
+            this.powerOffButton.Size = new System.Drawing.Size(64, 64);
+            this.powerOffButton.TabIndex = 19;
+            this.powerOffButton.UseVisualStyleBackColor = false;
+            this.powerOffButton.Click += new System.EventHandler(this.powerOffButton_Click);
+            // 
             // mp3Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(35)))), ((int)(((byte)(36)))));
-            this.ClientSize = new System.Drawing.Size(982, 553);
+            this.ClientSize = new System.Drawing.Size(982, 595);
+            this.Controls.Add(this.powerOffButton);
             this.Controls.Add(this.volumeBar);
             this.Controls.Add(this.groupBoxSongs);
             this.Controls.Add(this.groupBoxPlaylists);
@@ -428,6 +446,7 @@
         private System.Windows.Forms.Label songState;
         private System.Windows.Forms.Label songType;
         private RoundButton roundButtonAddSongToPlaylist;
+        private RoundButton powerOffButton;
     }
 }
 

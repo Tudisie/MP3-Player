@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,14 +30,55 @@ namespace MP3Player
         {
             InitializeComponent();
             _currentSong = new MP3Player.Song();
-            _playlists = new List<Playlist>();
-            _playlists.Add(new MP3Player.ConcretePlaylist("All songs"));    // playlist default
-            listBoxPlaylists.Items.Add(_playlists[0].PlaylistName);
-            listBoxPlaylists.SelectedIndex = 0;
+
+
+            if(loadPlaylists() == false)
+            {
+                _playlists.Add(new MP3Player.ConcretePlaylist("All songs"));    // playlist default
+                listBoxPlaylists.Items.Add(_playlists[0].PlaylistName);
+                listBoxPlaylists.SelectedIndex = 0;
+            }
             _progressBarTime = 0.0;
 
             _disabledColor = Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             _enabledColor = Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+        }
+
+        private bool loadPlaylists()
+        {
+            _playlists = new List<Playlist>();
+
+            try
+            {
+
+                string[] lines = System.IO.File.ReadAllLines("Playlists.txt");
+
+                int numberOfPlaylists = 0;
+                foreach(string line in lines)
+                {
+                    if(line[0] == '$') //Song
+                    {
+                        _playlists[numberOfPlaylists - 1].AddSong(line.Substring(1), "0");
+                    }
+                    else //Playlist
+                    {
+                        ++numberOfPlaylists;
+                        _playlists.Add(new MP3Player.ConcretePlaylist(line));
+                    }
+                }
+
+                RefreshPlaylists();
+
+                listBoxPlaylists.SelectedIndex = 0;
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                return false;
+            }
+
         }
 
         private void mp3Form_Load(object sender, EventArgs e)
@@ -47,6 +89,8 @@ namespace MP3Player
         private void startButton_Click(object sender, EventArgs e)
         {
             if(_currentSong.SongPath == null)
+                return;
+            if (this.songState.Text == "PLaying")
                 return;
 
             this.songTitle.Text = _currentSong.SongName;
@@ -59,7 +103,7 @@ namespace MP3Player
         private void timerSong_Tick(object sender, EventArgs e)
         {
             this._currentSong.Update();
-            int totalSeconds = this._currentSong.PassedTime / 60;
+            int totalSeconds = this._currentSong.PassedTime / 70;
             string mins, secs;
             if (totalSeconds / 60 < 10)
                 mins = "0" + totalSeconds / 60;
@@ -218,7 +262,8 @@ namespace MP3Player
         private void listBoxPlaylists_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Afisam melodiile din playlist-ul selectat in fereastra din dreapta (cea cu melodii)
-            
+
+           
             RefreshSongs();
             if(listBoxSongs.Items.Count > 0)
                 listBoxSongs.SelectedIndex = 0;
@@ -241,9 +286,19 @@ namespace MP3Player
             }
         }
 
-        private void songPassedTime_Click(object sender, EventArgs e)
+        private void powerOffButton_Click(object sender, EventArgs e)
         {
-
+            File.WriteAllText("Playlists.txt", "");
+            for (int i = 0; i < _playlists.Count; i++)
+            {
+                File.AppendAllText("Playlists.txt", _playlists[i].PlaylistName + "\n");
+                foreach(string str in _playlists[i].Songs)
+                {
+                    //melodiile vor avea $ in fata pentru a le diferentia de playlisturi
+                    File.AppendAllText("Playlists.txt", "$" + str + "\n");
+                }
+            }
+            this.Close();
         }
 
         private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
