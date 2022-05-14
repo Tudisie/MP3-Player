@@ -15,6 +15,8 @@ namespace MP3Player
         private Thread _myThread;
         private bool _isPaused = false;
         private string _songPath;
+        private string _songName;
+        private int _passedTime;
 
         public void Play()
         {
@@ -22,7 +24,7 @@ namespace MP3Player
             {
                 if (_myThread == null)
                 {
-                    _myThread = new Thread(PlaySong);
+                     _myThread = new Thread(PlaySong);
                     _myThread.Start();
                     _isPaused = false;
                 }
@@ -46,6 +48,7 @@ namespace MP3Player
             _wplayer = new WindowsMediaPlayer();
             _wplayer.URL = _songPath;
             _wplayer.controls.play();
+            _passedTime = 0;
         }
 
         public void Pause()
@@ -67,10 +70,37 @@ namespace MP3Player
             }
         }
 
+        public string GetSongDuration()
+        {
+            int x;
+            return _wplayer.currentMedia.durationString;
+        }
+
+        public void Update()
+        {
+            _passedTime += 1;
+        }
+
         public string SongPath
         {
+            get { return _songPath; }
             set { _songPath = value; }
         }
 
+        public string SongName
+        {
+            get { return _songName; }
+            set { _songName = value; }
+        }
+
+        public int PassedTime
+        {
+            get { return _passedTime; }
+        }
+
+        public WindowsMediaPlayer Wplayer
+        {
+            get { return _wplayer; }
+        }
     }
 }

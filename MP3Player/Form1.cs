@@ -19,7 +19,11 @@ namespace MP3Player
     {
         private Song _currentSong;
         // Subscriberi
-        private List<Playlist> _playlists; 
+        private List<Playlist> _playlists;
+
+        private Color _disabledColor, _enabledColor;
+        private bool _firstTime = true; //ForeColor defect la butoanele disabled
+        private double _progressBarTime;
 
         public mp3Form()
         {
@@ -29,6 +33,10 @@ namespace MP3Player
             _playlists.Add(new MP3Player.ConcretePlaylist("All songs"));    // playlist default
             listBoxPlaylists.Items.Add(_playlists[0].PlaylistName);
             listBoxPlaylists.SelectedIndex = 0;
+            _progressBarTime = 0.0;
+
+            _disabledColor = Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            _enabledColor = Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
         }
 
         private void mp3Form_Load(object sender, EventArgs e)
@@ -38,23 +46,60 @@ namespace MP3Player
 
         private void startButton_Click(object sender, EventArgs e)
         {
+            if(_currentSong.SongPath == null)
+                return;
+
+            this.songTitle.Text = _currentSong.SongName;
+            this.songState.Text = "Playing";
+            
             this.timerSong.Start();
-            _currentSong.Play();   
+            _currentSong.Play();
         }
 
         private void timerSong_Tick(object sender, EventArgs e)
         {
-            this.progressBarSong.Increment(1);
+            this._currentSong.Update();
+            int totalSeconds = this._currentSong.PassedTime / 60;
+            string mins, secs;
+            if (totalSeconds / 60 < 10)
+                mins = "0" + totalSeconds / 60;
+            else
+                mins = "" + totalSeconds / 60;
+
+            if (totalSeconds % 60 < 10)
+                secs = "0" + totalSeconds % 60;
+            else
+                secs = "" + totalSeconds % 60;
+
+            songPassedTime.Text = mins + ":" + secs;
+
+            double rate = 0.2;
+            _progressBarTime += rate;
+            this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
+            _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate
+
+            if(_currentSong.Wplayer != null)
+                if (_currentSong.Wplayer.currentMedia.durationString != "00:00")
+                    this.songTime.Text = _currentSong.Wplayer.currentMedia.durationString;
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
+            if (_currentSong.SongPath == null)
+                return;
+
+            this.songState.Text = "Paused";
             this.timerSong.Stop();
             _currentSong.Pause();
         }
 
         private void stopButton_Click(object sender, EventArgs e)
         {
+            if (_currentSong.SongPath == null)
+                return;
+
+            this.songTitle.Text = "MP3 Player";
+            this.songState.Text = "Stopped";
             this.timerSong.Stop();
             this.progressBarSong.Value = 0;
             _currentSong.Stop();
@@ -64,6 +109,17 @@ namespace MP3Player
         private void buttonAddPlaylist_Click(object sender, EventArgs e)
         {
             string newPlaylistName = Interaction.InputBox("Dati numele noului playlist:", "New playlist", "", -1, -1);
+
+            if (newPlaylistName == "")
+                return;
+            
+            for(int i = 0; i< _playlists.Count; i++)
+                if(_playlists[i].PlaylistName == newPlaylistName)
+                {
+                    MessageBox.Show("Acest playlist exista deja.");
+                    return;
+                }
+
             _playlists.Add(new MP3Player.ConcretePlaylist(newPlaylistName));
 
             RefreshPlaylists();
@@ -102,6 +158,7 @@ namespace MP3Player
                     string path = ofd.FileName;
 
                     // Cream o pereche <denumire, path> pt fiecare melodie adaugata
+                    // Se adauga by default in All Songs (playlist-ul 0)
                     _playlists[0].AddSong(name, ofd.FileName);
 
                     // Introducem denumirea in listbox-ul din interfata
@@ -109,6 +166,7 @@ namespace MP3Player
 
                     // By default, the selected song is the last added one
                     _currentSong.SongPath = path;
+                    _currentSong.SongName = name;
 
                 }
             }
@@ -154,14 +212,38 @@ namespace MP3Player
         {
             string songName = listBoxSongs.GetItemText(listBoxSongs.SelectedItem);
             _currentSong.SongPath = _playlists[listBoxPlaylists.SelectedIndex].PlaylistSongPath(songName);
+            _currentSong.SongName = songName;
         }
 
         private void listBoxPlaylists_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Afisam melodiile din playlist-ul selectat in fereastra din dreapta (cea cu melodii)
+            
             RefreshSongs();
             if(listBoxSongs.Items.Count > 0)
                 listBoxSongs.SelectedIndex = 0;
+
+            if (_firstTime)
+            {
+                _firstTime = false;
+                return;
+            }
+
+            if (listBoxPlaylists.SelectedIndex > 0 || listBoxSongs.Items.Count == 0 )
+            {
+                roundButtonAddSongToPlaylist.Enabled = false;
+                roundButtonAddSongToPlaylist.BackColor = _disabledColor;
+            }
+            else
+            {
+                roundButtonAddSongToPlaylist.Enabled = true;
+                roundButtonAddSongToPlaylist.BackColor = _enabledColor;
+            }
+        }
+
+        private void songPassedTime_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
