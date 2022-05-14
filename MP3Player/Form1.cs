@@ -101,7 +101,7 @@ namespace MP3Player
         }
 
         private void timerSong_Tick(object sender, EventArgs e)
-        {
+        {  
             this._currentSong.Update();
             int totalSeconds = this._currentSong.PassedTime / 70;
             string mins, secs;
@@ -122,9 +122,10 @@ namespace MP3Player
             this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
             _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate
 
-            if(_currentSong.Wplayer != null)
-                if (_currentSong.Wplayer.currentMedia.durationString != "00:00")
-                    this.songTime.Text = _currentSong.Wplayer.currentMedia.durationString;
+            //if(_currentSong.Wplayer != null)
+                //if (_currentSong.Wplayer.currentMedia.durationString != "00:00")
+                    //this.songTime.Text = _currentSong.Wplayer.currentMedia.durationString;
+            
         }
 
         private void pauseButton_Click(object sender, EventArgs e)

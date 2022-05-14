@@ -17,7 +17,6 @@ namespace MP3Player
         private string _songPath;
         private string _songName;
         private int _passedTime;
-        private StringBuilder _sb;
 
         public void Play()
         {
@@ -26,7 +25,7 @@ namespace MP3Player
                 if (_myThread == null)
                 {
                     _myThread = new Thread(PlaySong);
-                    //_myThread.Start();
+                    _myThread.Start();
 
                     //Task.Run(() => PlaySong());
                     _isPaused = false;

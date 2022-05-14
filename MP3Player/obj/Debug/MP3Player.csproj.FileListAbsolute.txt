@@ -32,3 +32,15 @@ D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github\MP3-Player\M
 D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\Interop.MediaPlayer.dll
 D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\Interop.WMPLib.dll
 D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.ResolveComReference.cache
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\bin\Debug\MP3Player.exe.config
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\Interop.MediaPlayer.dll
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\Interop.WMPLib.dll
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.csproj.ResolveComReference.cache
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.exe
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.pdb
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\bin\Debug\MP3Player.exe
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\bin\Debug\MP3Player.pdb
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.csprojResolveAssemblyReference.cache
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.mp3Form.resources
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.Properties.Resources.resources
+D:\Robert\FACULTATE\ANUL 3\Semestrul 2\IP\Proiect\Repository-Github-1\MP3-Player\MP3Player\obj\Debug\MP3Player.csproj.GenerateResource.Cache

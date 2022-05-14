@@ -36,7 +36,6 @@
             this.songDisplay = new System.Windows.Forms.Panel();
             this.songType = new System.Windows.Forms.Label();
             this.songState = new System.Windows.Forms.Label();
-            this.songTime = new System.Windows.Forms.Label();
             this.songPassedTime = new System.Windows.Forms.Label();
             this.songTitle = new System.Windows.Forms.Label();
             this.playButton = new MP3Player.RoundButton();
@@ -104,7 +103,6 @@
             this.songDisplay.BackColor = System.Drawing.Color.Black;
             this.songDisplay.Controls.Add(this.songType);
             this.songDisplay.Controls.Add(this.songState);
-            this.songDisplay.Controls.Add(this.songTime);
             this.songDisplay.Controls.Add(this.songPassedTime);
             this.songDisplay.Controls.Add(songLogo);
             this.songDisplay.Controls.Add(this.songTitle);
@@ -118,7 +116,7 @@
             this.songType.AutoSize = true;
             this.songType.Location = new System.Drawing.Point(158, 55);
             this.songType.Name = "songType";
-            this.songType.Size = new System.Drawing.Size(34, 16);
+            this.songType.Size = new System.Drawing.Size(36, 17);
             this.songType.TabIndex = 5;
             this.songType.Text = "MP3";
             // 
@@ -127,27 +125,18 @@
             this.songState.AutoSize = true;
             this.songState.Location = new System.Drawing.Point(87, 53);
             this.songState.Name = "songState";
-            this.songState.Size = new System.Drawing.Size(52, 16);
+            this.songState.Size = new System.Drawing.Size(57, 17);
             this.songState.TabIndex = 4;
             this.songState.Text = "Starting";
-            // 
-            // songTime
-            // 
-            this.songTime.AutoSize = true;
-            this.songTime.Location = new System.Drawing.Point(288, 53);
-            this.songTime.Name = "songTime";
-            this.songTime.Size = new System.Drawing.Size(38, 16);
-            this.songTime.TabIndex = 3;
-            this.songTime.Text = "00:00";
             // 
             // songPassedTime
             // 
             this.songPassedTime.AutoSize = true;
             this.songPassedTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.songPassedTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(206)))), ((int)(((byte)(250)))));
-            this.songPassedTime.Location = new System.Drawing.Point(280, 21);
+            this.songPassedTime.Location = new System.Drawing.Point(268, 53);
             this.songPassedTime.Name = "songPassedTime";
-            this.songPassedTime.Size = new System.Drawing.Size(55, 22);
+            this.songPassedTime.Size = new System.Drawing.Size(55, 24);
             this.songPassedTime.TabIndex = 2;
             this.songPassedTime.Text = "00:00";
             // 
@@ -440,7 +429,6 @@
         private System.Windows.Forms.Timer timerSong;
         private System.Windows.Forms.Panel songDisplay;
         private System.Windows.Forms.Label songTitle;
-        private System.Windows.Forms.Label songTime;
         private System.Windows.Forms.Label songPassedTime;
         private NewProgressBar progressBarSong;
         private System.Windows.Forms.Label songState;
