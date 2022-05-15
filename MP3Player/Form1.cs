@@ -30,7 +30,7 @@ namespace MP3Player
 
         public mp3Form()
         {
-            //MessageBox.Show("Atentie!\nCa sa functioneze muzica:\n Decomentati:\n  -cele 2 linii din if (!_loadedAux)\n  -cele 2 linii din Song.cs/Play\n\n\tTudisie");
+            MessageBox.Show("Atentie!\nCa sa functioneze muzica:\n Decomentati:\n  -cele 2 linii din if (!_loadedAux)\n  -cele 2 linii din Song.cs/Play\n\n\tTudisie");
 
             InitializeComponent();
             _currentSong = new MP3Player.Song();
