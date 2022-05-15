@@ -1,1 +1,9 @@
 All songs
+$1.mp3///C:\Users\Istrate Sebastian\Downloads\1.mp3
+$2.mp3///C:\Users\Istrate Sebastian\Downloads\2.mp3
+$5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
+$3.mp3///C:\Users\Istrate Sebastian\Downloads\3.mp3
+Merge bine
+$5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
+Gol
+$3.mp3///C:\Users\Istrate Sebastian\Downloads\3.mp3

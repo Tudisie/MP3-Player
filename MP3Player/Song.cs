@@ -24,8 +24,8 @@ namespace MP3Player
             {
                 if (_myThread == null)
                 {
-                    _myThread = new Thread(PlaySong);
-                    _myThread.Start();
+                    //_myThread = new Thread(PlaySong);
+                    //_myThread.Start();
 
                     //Task.Run(() => PlaySong());
                     _isPaused = false;
@@ -99,6 +99,7 @@ namespace MP3Player
         public int PassedTime
         {
             get { return _passedTime; }
+            set { _passedTime = value; }
         }
 
         public WindowsMediaPlayer Wplayer

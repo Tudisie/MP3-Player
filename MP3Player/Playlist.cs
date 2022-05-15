@@ -20,6 +20,11 @@ namespace MP3Player
             get;
         }
 
+        public abstract string[] SongsWithPaths
+        {
+            get;
+        }
+
         public abstract string PlaylistName
         {
             get;

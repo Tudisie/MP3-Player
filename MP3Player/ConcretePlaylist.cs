@@ -36,6 +36,21 @@ namespace MP3Player
             }
         }
 
+        public override string[] SongsWithPaths
+        {
+            get
+            {
+                string[] songs = new string[_songList.Count];
+                int i = 0;
+                foreach (KeyValuePair<string, string> elem in _songList)
+                {
+                    songs[i++] = elem.Key + "///" + elem.Value;
+                }
+
+                return songs;
+            }
+        }
+
         public override string PlaylistName
         {
             get { return _playlistName; }

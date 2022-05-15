@@ -24,6 +24,8 @@ namespace MP3Player
 
         private Color _disabledColor, _enabledColor;
         private bool _firstTime = true; //ForeColor defect la butoanele disabled
+        private bool _loadedAux = false;
+        private int _loadingSong; //unele operatii nu pot fi facute pana nu se incarca melodia in celalalt thread
         private double _progressBarTime;
 
         public mp3Form()
@@ -58,7 +60,9 @@ namespace MP3Player
                 {
                     if(line[0] == '$') //Song
                     {
-                        _playlists[numberOfPlaylists - 1].AddSong(line.Substring(1), "0");
+                        //Format: $song_name///song_path
+                        string[] subs = line.Substring(1).Split(new String[] {"///"}, StringSplitOptions.None);
+                        _playlists[numberOfPlaylists - 1].AddSong(subs[0],subs[1]);
                     }
                     else //Playlist
                     {
@@ -90,41 +94,67 @@ namespace MP3Player
         {
             if(_currentSong.SongPath == null)
                 return;
-            if (this.songState.Text == "PLaying")
+            if (this.songState.Text == "Playing")
                 return;
+            if (!File.Exists(_currentSong.SongPath))
+            {
+                _playlists[0].RemoveSong(_currentSong.SongName);
+                NotifyPlaylists(_currentSong.SongName);
+
+                RefreshSongs();
+
+                if (listBoxSongs.Items.Count > 0)
+                    listBoxSongs.SelectedIndex = 0;
+
+                MessageBox.Show("File " + _currentSong.SongName + " doesn't exist in local PC.");
+                return;
+            }
 
             this.songTitle.Text = _currentSong.SongName;
             this.songState.Text = "Playing";
-            
+
+            _loadingSong = 10;
+            _loadedAux = false;
+
             this.timerSong.Start();
             _currentSong.Play();
         }
 
         private void timerSong_Tick(object sender, EventArgs e)
         {  
-            this._currentSong.Update();
-            int totalSeconds = this._currentSong.PassedTime / 70;
-            string mins, secs;
-            if (totalSeconds / 60 < 10)
-                mins = "0" + totalSeconds / 60;
-            else
-                mins = "" + totalSeconds / 60;
 
-            if (totalSeconds % 60 < 10)
-                secs = "0" + totalSeconds % 60;
-            else
-                secs = "" + totalSeconds % 60;
-
-            songPassedTime.Text = mins + ":" + secs;
-
-            double rate = 0.2;
-            _progressBarTime += rate;
-            this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
-            _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate
-
-            //if(_currentSong.Wplayer != null)
-                //if (_currentSong.Wplayer.currentMedia.durationString != "00:00")
+            if (!_loadedAux)
+            {
+                if (_loadingSong <= 0)
+                {
+                    _loadedAux = true;
                     //this.songTime.Text = _currentSong.Wplayer.currentMedia.durationString;
+                }
+                _loadingSong--;
+            }
+            else
+            {
+                this._currentSong.Update();
+                int totalSeconds = this._currentSong.PassedTime / 70;
+                string mins, secs;
+                if (totalSeconds / 60 < 10)
+                    mins = "0" + totalSeconds / 60;
+                else
+                    mins = "" + totalSeconds / 60;
+
+                if (totalSeconds % 60 < 10)
+                    secs = "0" + totalSeconds % 60;
+                else
+                    secs = "" + totalSeconds % 60;
+
+                songPassedTime.Text = mins + ":" + secs;
+
+                double rate = 0.2;
+                _progressBarTime += rate;
+                this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
+                _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate
+            }
+            
             
         }
 
@@ -147,7 +177,26 @@ namespace MP3Player
             this.songState.Text = "Stopped";
             this.timerSong.Stop();
             this.progressBarSong.Value = 0;
+            this.songTime.Text = "00:00";
+            this.songPassedTime.Text = "00:00";
+            _currentSong.PassedTime = 0;
             _currentSong.Stop();
+        }
+
+        private void nextSongButton_Click(object sender, EventArgs e)
+        {
+            if (listBoxSongs.SelectedIndex < listBoxSongs.Items.Count - 1)
+                listBoxSongs.SelectedIndex++;
+            stopButton_Click(sender, e);
+            startButton_Click(sender, e);
+        }
+
+        private void previousSongButton_Click(object sender, EventArgs e)
+        {
+            if (listBoxSongs.SelectedIndex > 0)
+                listBoxSongs.SelectedIndex--;
+            stopButton_Click(sender, e);
+            startButton_Click(sender, e);
         }
 
         // Subscribe
@@ -293,7 +342,7 @@ namespace MP3Player
             for (int i = 0; i < _playlists.Count; i++)
             {
                 File.AppendAllText("Playlists.txt", _playlists[i].PlaylistName + "\n");
-                foreach(string str in _playlists[i].Songs)
+                foreach(string str in _playlists[i].SongsWithPaths)
                 {
                     //melodiile vor avea $ in fata pentru a le diferentia de playlisturi
                     File.AppendAllText("Playlists.txt", "$" + str + "\n");
@@ -301,6 +350,7 @@ namespace MP3Player
             }
             this.Close();
         }
+
 
         private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
         {
