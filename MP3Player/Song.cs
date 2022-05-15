@@ -27,7 +27,6 @@ namespace MP3Player
                     //_myThread = new Thread(PlaySong);
                     //_myThread.Start();
 
-                    //Task.Run(() => PlaySong());
                     _isPaused = false;
                 }
                 else

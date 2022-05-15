@@ -1,9 +1,8 @@
 All songs
-$1.mp3///C:\Users\Istrate Sebastian\Downloads\1.mp3
-$2.mp3///C:\Users\Istrate Sebastian\Downloads\2.mp3
+$Melodia asta este super lunga ca nume.mp3///C:\Users\Istrate Sebastian\Downloads\Melodia asta este super lunga ca nume.mp3
+$Ana are foarte multe.mp3///C:\Users\Istrate Sebastian\Downloads\Ana are foarte multe.mp3
 $5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
-$3.mp3///C:\Users\Istrate Sebastian\Downloads\3.mp3
+$AAAAAAAAAAAAAAAAAAAAA.mp3///C:\Users\Istrate Sebastian\Downloads\AAAAAAAAAAAAAAAAAAAAA.mp3
 Merge bine
 $5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
 Gol
-$3.mp3///C:\Users\Istrate Sebastian\Downloads\3.mp3

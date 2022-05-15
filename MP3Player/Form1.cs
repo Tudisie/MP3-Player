@@ -30,9 +30,10 @@ namespace MP3Player
 
         public mp3Form()
         {
+            //MessageBox.Show("Atentie!\nCa sa functioneze muzica:\n Decomentati:\n  -cele 2 linii din if (!_loadedAux)\n  -cele 2 linii din Song.cs/Play\n\n\tTudisie");
+
             InitializeComponent();
             _currentSong = new MP3Player.Song();
-
 
             if(loadPlaylists() == false)
             {
@@ -110,8 +111,12 @@ namespace MP3Player
                 return;
             }
 
+            
             this.songTitle.Text = _currentSong.SongName;
+            
+
             this.songState.Text = "Playing";
+      
 
             _loadingSong = 10;
             _loadedAux = false;
@@ -129,6 +134,7 @@ namespace MP3Player
                 {
                     _loadedAux = true;
                     //this.songTime.Text = _currentSong.Wplayer.currentMedia.durationString;
+                    //_currentSong.Wplayer.settings.volume = volumeBar.Value;
                 }
                 _loadingSong--;
             }
@@ -239,6 +245,15 @@ namespace MP3Player
             listBoxPlaylists.SelectedIndex = 0;
         }
 
+        private void shuffleButton_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+            listBoxSongs.SelectedIndex = r.Next(listBoxSongs.Items.Count);
+
+            stopButton_Click(sender, e);
+            startButton_Click(sender, e);
+        }
+
         private void roundButtonAddSong_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -282,6 +297,7 @@ namespace MP3Player
                 listBoxSongs.SelectedIndex = 0;
             
         }
+
 
         // Notify subscribers
         private void NotifyPlaylists(string songName)
@@ -351,6 +367,25 @@ namespace MP3Player
             this.Close();
         }
 
+        private void volumeBar_Scroll(object sender, EventArgs e)
+        {
+            if (songState.Text == "Playing")
+                _currentSong.Wplayer.settings.volume = volumeBar.Value;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("MP3 Player Help.chm");
+        }
+
+        private void infoButton_Click(object sender, EventArgs e)
+        {
+            string text = "MP3 Player este un program cu ajutorul caruia se poate asculta muzica." +
+                "Melodiile pot fi adaugate direct in playlist-ul general \"All Songs\" " + 
+                "si dupa mutate in alte playlist-uri.";
+            string title = "About MP3 Player";
+            MessageBox.Show(text, title);
+        }
 
         private void roundButtonAddSongToPlaylist_Click(object sender, EventArgs e)
         {
