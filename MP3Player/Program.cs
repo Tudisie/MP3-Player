@@ -1,4 +1,16 @@
-﻿using System;
+﻿/********************************************************************************************
+ *                                                                                          *
+ *  File:        Program.cs                                                                 *
+ *  Copyright:   (c) 2022, Curpan Robert, Istrate Sebastian, Toma Catalin                   *
+ *  E-mail:      robert-gabriel.curpan@student.tuiasi.ro                                    *
+ *  Website:     https://github.com/Tudisie/MP3-Player                                      *
+ *  Description: Program that starts the whole MP3 Player app (runs and displays the UI)    *     
+ *               that the client can interact with.                                         *                                          
+ *                                                                                          *
+ *******************************************************************************************/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +28,7 @@ namespace MP3Player
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mp3Form());
+            Application.Run(new Mp3Form());
         }
     }
 }

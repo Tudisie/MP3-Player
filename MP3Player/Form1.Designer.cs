@@ -1,6 +1,6 @@
 ﻿namespace MP3Player
 {
-    partial class mp3Form
+    partial class Mp3Form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.PictureBox songLogo;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mp3Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mp3Form));
             System.Windows.Forms.PictureBox minLogo;
             System.Windows.Forms.PictureBox maxLogo;
             this.groupBoxControlPanel = new System.Windows.Forms.GroupBox();

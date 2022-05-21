@@ -1,8 +1,4 @@
 All songs
-$Melodia asta este super lunga ca nume.mp3///C:\Users\Istrate Sebastian\Downloads\Melodia asta este super lunga ca nume.mp3
-$Ana are foarte multe.mp3///C:\Users\Istrate Sebastian\Downloads\Ana are foarte multe.mp3
-$5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
-$AAAAAAAAAAAAAAAAAAAAA.mp3///C:\Users\Istrate Sebastian\Downloads\AAAAAAAAAAAAAAAAAAAAA.mp3
-Merge bine
-$5.mp3///C:\Users\Istrate Sebastian\Downloads\5.mp3
-Gol
+$twocolors - Lovefool (Lyrics).mp3///C:\Users\Robert\Desktop\twocolors - Lovefool (Lyrics).mp3
+$Otilia - Adelante (Y3MR$ Remix) _ LIMMA.mp3///C:\Users\Robert\Desktop\Otilia - Adelante (Y3MR$ Remix) _ LIMMA.mp3
+$Jason Derulo - Acapulco [Official Music Video].mp3///C:\Users\Robert\Desktop\Jason Derulo - Acapulco [Official Music Video].mp3
