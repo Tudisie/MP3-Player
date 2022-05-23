@@ -109,6 +109,7 @@
             this.groupBoxControlPanel.Controls.Add(maxLogo);
             this.groupBoxControlPanel.Controls.Add(minLogo);
             this.groupBoxControlPanel.Controls.Add(this.volumeBar);
+            this.groupBoxControlPanel.Controls.Add(this.shuffleButton);
             this.groupBoxControlPanel.Controls.Add(this.progressBarSong);
             this.groupBoxControlPanel.Controls.Add(this.songDisplay);
             this.groupBoxControlPanel.Controls.Add(this.playButton);
@@ -203,7 +204,7 @@
             this.songTitle.ForeColor = System.Drawing.Color.LightSkyBlue;
             this.songTitle.Location = new System.Drawing.Point(77, 7);
             this.songTitle.Name = "songTitle";
-            this.songTitle.Size = new System.Drawing.Size(136, 50);
+            this.songTitle.Size = new System.Drawing.Size(136, 53);
             this.songTitle.TabIndex = 0;
             this.songTitle.Text = "Welcome!";
             // 
@@ -345,7 +346,6 @@
             this.groupBoxSongs.Controls.Add(this.roundButtonAddSongToPlaylist);
             this.groupBoxSongs.Controls.Add(this.listBoxSongs);
             this.groupBoxSongs.Controls.Add(this.roundButtonAddSong);
-            this.groupBoxSongs.Controls.Add(this.shuffleButton);
             this.groupBoxSongs.Controls.Add(this.roundButtonRemoveSong);
             this.groupBoxSongs.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBoxSongs.Location = new System.Drawing.Point(518, 34);
@@ -363,7 +363,7 @@
             this.roundButtonAddSongToPlaylist.Enabled = false;
             this.roundButtonAddSongToPlaylist.FlatAppearance.BorderSize = 0;
             this.roundButtonAddSongToPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(243, 418);
+            this.roundButtonAddSongToPlaylist.Location = new System.Drawing.Point(224, 418);
             this.roundButtonAddSongToPlaylist.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonAddSongToPlaylist.Name = "roundButtonAddSongToPlaylist";
             this.roundButtonAddSongToPlaylist.Size = new System.Drawing.Size(32, 32);
@@ -392,7 +392,7 @@
             this.roundButtonAddSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.roundButtonAddSong.FlatAppearance.BorderSize = 0;
             this.roundButtonAddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonAddSong.Location = new System.Drawing.Point(156, 418);
+            this.roundButtonAddSong.Location = new System.Drawing.Point(137, 418);
             this.roundButtonAddSong.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonAddSong.Name = "roundButtonAddSong";
             this.roundButtonAddSong.Size = new System.Drawing.Size(32, 32);
@@ -408,7 +408,7 @@
             this.shuffleButton.FlatAppearance.BorderSize = 0;
             this.shuffleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shuffleButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.shuffleButton.Location = new System.Drawing.Point(112, 418);
+            this.shuffleButton.Location = new System.Drawing.Point(358, 161);
             this.shuffleButton.Margin = new System.Windows.Forms.Padding(0);
             this.shuffleButton.Name = "shuffleButton";
             this.shuffleButton.Size = new System.Drawing.Size(32, 32);
@@ -423,7 +423,7 @@
             this.roundButtonRemoveSong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.roundButtonRemoveSong.FlatAppearance.BorderSize = 0;
             this.roundButtonRemoveSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButtonRemoveSong.Location = new System.Drawing.Point(200, 418);
+            this.roundButtonRemoveSong.Location = new System.Drawing.Point(181, 418);
             this.roundButtonRemoveSong.Margin = new System.Windows.Forms.Padding(0);
             this.roundButtonRemoveSong.Name = "roundButtonRemoveSong";
             this.roundButtonRemoveSong.Size = new System.Drawing.Size(32, 32);
@@ -484,7 +484,7 @@
             this.powerOffButton.UseVisualStyleBackColor = false;
             this.powerOffButton.Click += new System.EventHandler(this.powerOffButton_Click);
             // 
-            // mp3Form
+            // Mp3Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(35)))), ((int)(((byte)(36)))));
@@ -496,7 +496,7 @@
             this.Controls.Add(this.groupBoxPlaylists);
             this.Controls.Add(this.groupBoxControlPanel);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "mp3Form";
+            this.Name = "Mp3Form";
             this.Text = "MP3 Player";
             this.Load += new System.EventHandler(this.mp3Form_Load);
             ((System.ComponentModel.ISupportInitialize)(songLogo)).EndInit();

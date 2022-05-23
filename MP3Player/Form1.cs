@@ -46,6 +46,9 @@ namespace MP3Player
         private int _loadingSong; //unele operatii nu pot fi facute pana nu se incarca melodia in celalalt thread
         private double _progressBarTime;
 
+        private string _selectedSongPath;
+        private string _selectedSongName;
+
         /// <summary>
         /// This creates the default playlist if it does not exists. Also, here, all the songs and playlists saved in the file are loaded (basically restores the last state of the mp3 player that was saved in the file by pressing the power button in the UI).
         /// </summary>
@@ -126,35 +129,75 @@ namespace MP3Player
         /// <param name="e">Contains the event data</param>
         private void startButton_Click(object sender, EventArgs e)
         {
-            if(_currentSong.SongPath == null)
+            if (_selectedSongPath == null)
                 return;
             if (this.songState.Text == "Playing")
-                return;
-            if (!File.Exists(_currentSong.SongPath))
             {
+                if(_currentSong.SongName == _selectedSongName)
+                {
+                    //Play la melodia care e deja in curs de redare, deci nu trebuie facut nimic
+                    return;
+                }
+                else
+                {
+                    //Este o melodie in curs de rulare, dar se alege alta pentru redare, deci trebuie oprita cea anterioara mai intai
+                    try
+                    {
+                        _currentSong.StopSong();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if(this.songState.Text == "Paused")
+            {
+                //Playerul este pe pauza, deci trebuie reluata melodia
+                if (_currentSong.SongName != _selectedSongName)
+                {
+                    try
+                    {
+                        _currentSong.Play();
+                        _currentSong.StopSong();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            if (!File.Exists(_selectedSongPath))
+            {
+                MessageBox.Show("File " + _selectedSongName + " doesn't exist in local PC.");
                 try
                 {
-                    _playlists[0].RemoveSong(_currentSong.SongName);
-                    NotifyPlaylists(_currentSong.SongName);
+                    _playlists[0].RemoveSong(_selectedSongName);
+                    NotifyPlaylists(_selectedSongPath);
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show(ex.Message);
                 }
+
+                this.songTitle.Text = "MP3 Player";
+                this.songState.Text = "Stopped";
+                this.timerSong.Stop();
+                this.progressBarSong.Value = 0;
+                this.songTime.Text = "00:00";
+                this.songPassedTime.Text = "00:00";
 
                 RefreshSongs();
 
                 if (listBoxSongs.Items.Count > 0)
                     listBoxSongs.SelectedIndex = 0;
 
-                MessageBox.Show("File " + _currentSong.SongName + " doesn't exist in local PC.");
                 return;
             }
-
+            _currentSong.SongPath = _selectedSongPath;
+            _currentSong.SongName = _selectedSongName;
             
             this.songTitle.Text = _currentSong.SongName;
-            
-
             this.songState.Text = "Playing";
       
 
@@ -194,25 +237,34 @@ namespace MP3Player
             }
             else
             {
-                this._currentSong.Update();
-                int totalSeconds = this._currentSong.PassedTime / 70;
+                //this._currentSong.Update();
+                _progressBarTime = this._currentSong.PassedTime;
                 string mins, secs;
-                if (totalSeconds / 60 < 10)
-                    mins = "0" + totalSeconds / 60;
+                if (_progressBarTime / 60 < 10)
+                    mins = "0" + (int)_progressBarTime / 60;
                 else
-                    mins = "" + totalSeconds / 60;
+                    mins = "" + (int)_progressBarTime / 60;
 
-                if (totalSeconds % 60 < 10)
-                    secs = "0" + totalSeconds % 60;
+                if (_progressBarTime % 60 < 10)
+                    secs = "0" + (int)_progressBarTime % 60;
                 else
-                    secs = "" + totalSeconds % 60;
+                    secs = "" + (int)_progressBarTime % 60;
 
                 songPassedTime.Text = mins + ":" + secs;
 
-                double rate = 0.2;
+                try
+                {
+                    this.progressBarSong.Value = (int)(_progressBarTime * 100 / _currentSong.GetSongDurationDouble());
+                }
+                catch(Exception ex)
+                {
+                    this.progressBarSong.Value = 0;
+                }
+                this.songTime.Text = _currentSong.GetSongDurationString();
+                /*double rate = 0.2;
                 _progressBarTime += rate;
                 this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
-                _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate
+                _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate*/
             }
             
             
@@ -237,7 +289,7 @@ namespace MP3Player
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             
         }
@@ -266,7 +318,7 @@ namespace MP3Player
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             
         }
@@ -458,9 +510,10 @@ namespace MP3Player
         /// <param name="e">Contains the event data</param>
         private void listBoxSongs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string songName = listBoxSongs.GetItemText(listBoxSongs.SelectedItem);
+            _selectedSongName = listBoxSongs.GetItemText(listBoxSongs.SelectedItem);
+            _selectedSongPath = _playlists[listBoxPlaylists.SelectedIndex].PlaylistSongPath(_selectedSongName);
 
-            try
+            /*try
             {
                 _currentSong.SongPath = _playlists[listBoxPlaylists.SelectedIndex].PlaylistSongPath(songName);
             }
@@ -469,7 +522,8 @@ namespace MP3Player
                 MessageBox.Show(ex.Message);
             }
             
-            _currentSong.SongName = songName;
+            _currentSong.SongName = songName;*/
+
         }
 
         /// <summary>
@@ -631,7 +685,5 @@ namespace MP3Player
                 MessageBox.Show("Trebuie sa fiti in playlist-ul default pt a adauga melodii in alt playlist!");
             }
         }
-
-       
     }
 }
