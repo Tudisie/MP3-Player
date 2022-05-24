@@ -18,3 +18,10 @@ C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\PlaylistDLL\PlaylistDLL\obj\D
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.csproj.CoreCompileInputs.cache
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.dll
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.pdb
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\bin\Debug\PlaylistDLL.XML
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\bin\Debug\PlaylistDLL.dll
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\bin\Debug\PlaylistDLL.pdb
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.csproj.AssemblyReference.cache
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.csproj.CoreCompileInputs.cache
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.dll
+D:\IP\Proiect\MP3Player\PlaylistDLL\PlaylistDLL\obj\Debug\PlaylistDLL.pdb

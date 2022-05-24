@@ -10,21 +10,13 @@
  *                                                                                          *
  *******************************************************************************************/
 
-
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Microsoft.VisualBasic;
-using WMPLib;
 
 using SongDLL;
 using PlaylistDLL;
@@ -37,13 +29,13 @@ namespace MP3Player
     public partial class Mp3Form : Form 
     {
         private Song _currentSong;
-        // Subscriberi
+        // Subscribers
         private List<Playlist> _playlists;
 
         private Color _disabledColor, _enabledColor;
-        private bool _firstTime = true; //ForeColor defect la butoanele disabled
+        private bool _firstTime = true;
         private bool _loadedAux = false;
-        private int _loadingSong; //unele operatii nu pot fi facute pana nu se incarca melodia in celalalt thread
+        private int _loadingSong;
         private double _progressBarTime;
 
         private string _selectedSongPath;
@@ -261,12 +253,7 @@ namespace MP3Player
                     this.progressBarSong.Value = 0;
                 }
                 this.songTime.Text = _currentSong.GetSongDurationString();
-                /*double rate = 0.2;
-                _progressBarTime += rate;
-                this.progressBarSong.Increment(Convert.ToInt32(_progressBarTime));
-                _progressBarTime = _progressBarTime - Convert.ToInt32(_progressBarTime); // partea fractionara a lui rate*/
-            }
-            
+               }
             
         }
 

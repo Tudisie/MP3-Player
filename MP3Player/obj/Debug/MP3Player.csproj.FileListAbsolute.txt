@@ -99,3 +99,13 @@ C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\MP3Player\bin\Debug\PlaylistD
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\MP3Player\bin\Debug\SongDLL.dll
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\MP3Player\bin\Debug\PlaylistDLL.pdb
 C:\Users\Catalin\Desktop\ProiectIp\MP3-Player-main\MP3Player\bin\Debug\SongDLL.pdb
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.XML
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\PlaylistDLL.pdb
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\PlaylistDLL.xml
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\SongDLL.pdb
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\SongDLL.xml
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.csproj.CopyComplete
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.exe.manifest
+D:\IP\Proiect\MP3Player\MP3Player\bin\Debug\MP3Player.application
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.exe.manifest
+D:\IP\Proiect\MP3Player\MP3Player\obj\Debug\MP3Player.application
